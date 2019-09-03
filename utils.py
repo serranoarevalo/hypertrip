@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 wiki_url = "https://en.wikipedia.org/wiki/"
 weather_url = "https://www.timeanddate.com/weather/"
+currency_url = "https://www.x-rates.com/calculator/?"
 
 
 def format_names(name):
@@ -47,3 +48,10 @@ def get_current_weather(country, city):
     weather_soup = BeautifulSoup(weather_request.text, "html.parser")
     temperature = weather_soup.find("div", text="Now").findNext("div", class_="h2").text
     return temperature
+
+
+def get_currency_conversion(from_currency, to_currency):
+    currency_request = requests.get(f'{currency_url}from={from_currency}&to={to_currency}&amount=1')
+    currency_soup = BeautifulSoup(currency_request.text, "html.parser")
+    output = currency_soup.find("span", {'class': "ccOutputRslt"}).text
+    return output

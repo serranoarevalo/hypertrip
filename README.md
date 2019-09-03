@@ -3,11 +3,10 @@
 Python scrapper to get travel information of any city.
 
 ### Scrapped Information:
-- Country Information (Language, Currency, Timezone)
-- Currency Conversion
-- City Weather
-- Top Rated Hotels with prices
-- 
+- [x] Country Information (Language, Currency, Timezone)
+- [x] Currency Conversion
+- [x] City Weather
+- [ ] Top Rated Hotels with prices
 
 
 ### Built with:
