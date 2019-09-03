@@ -1,5 +1,4 @@
 import requests
-import re
 from bs4 import BeautifulSoup
 
 
@@ -35,5 +34,6 @@ def get_country_data(soup):
     language = info_box.select_one(".mergedtoprow", text="Official languages").find("td").find("a").text
     currency = info_box.find(text="Currency").findNext("td")
     currency_name, currency_iso = currency.findAll("a")
+    iso_code = info_box.find(text="ISO 3166 code").findNext("td").text
     timezone = info_box.find(text="Time zone").findNext("td").text
-    return [language, currency_name.text, currency_iso.text, timezone]
+    return [language, currency_name.text, currency_iso.text, timezone, iso_code]

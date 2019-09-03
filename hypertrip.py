@@ -8,6 +8,8 @@ country, country_soup = get_country_soup(city_soup)
 
 print(f'Gathering data for: {city}/{country}')
 
-language, currency, currency_iso, timezone = get_country_data(country_soup)
+language, currency, currency_iso, timezone, iso_code = get_country_data(country_soup)
 
-print(f'Language: {language}, Currency: {currency}, Timezone: {timezone}')
+print(f'Language: {language}, Currency: {currency}, Timezone: {timezone}, Country Code: {iso_code}')
+
+
