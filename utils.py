@@ -67,5 +67,7 @@ def get_hotels(iso_country, city_name):
     for hotel in hotels:
         name = hotel.find("h3", class_="bui-spacer--smaller").find("span").text
         price = hotel.find("div", class_="sr__card_price").find("span").text
-        found_hotels.append(f'⭐️ {name.strip()} / {price}')
+        book_link = hotel.find("a", class_="bui-button")
+        
+        found_hotels.append(f'⭐️ {name.strip()} / {price} / https://booking.com{book_link["href"]}')
     return found_hotels

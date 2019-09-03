@@ -6,9 +6,9 @@ Python scrapper to get travel information of any city.
 - [x] Country Information (Language, Currency, Timezone)
 - [x] Currency Conversion
 - [x] City Weather
-- [ ] Top Rated Hotels with prices
+- [x] Top Rated Hotels with prices
 
 
 ### Built with:
-- [x] Flask
+- [ ] Flask
 - [x] BeautifulSoup
