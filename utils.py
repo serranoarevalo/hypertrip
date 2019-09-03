@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 wiki_url = "https://en.wikipedia.org/wiki/"
 weather_url = "https://www.timeanddate.com/weather/"
 currency_url = "https://www.x-rates.com/calculator/?"
+booking_url = "https://www.booking.com/city/"
 
 
 def format_names(name):
@@ -55,3 +56,16 @@ def get_currency_conversion(from_currency, to_currency):
     currency_soup = BeautifulSoup(currency_request.text, "html.parser")
     output = currency_soup.find("span", {'class': "ccOutputRslt"}).text
     return output
+
+
+def get_hotels(iso_country, city_name):
+    hotel_request = requests.get(f'{booking_url}{iso_country}/{city_name}.en-us.html&selected_currency=USD')
+    hotel_soup = BeautifulSoup(hotel_request.text, "html.parser")
+    hotels_box = hotel_soup.find("div", class_="content__col")
+    hotels = hotels_box.find_all("div", class_="sr__card")
+    found_hotels = []
+    for hotel in hotels:
+        name = hotel.find("h3", class_="bui-spacer--smaller").find("span").text
+        price = hotel.find("div", class_="sr__card_price").find("span").text
+        found_hotels.append(f'⭐️ {name.strip()} / {price}')
+    return found_hotels
