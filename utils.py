@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 
 wiki_url = "https://en.wikipedia.org/wiki/"
+weather_url = "https://www.timeanddate.com/weather/"
 
 
 def format_names(name):
@@ -37,3 +38,12 @@ def get_country_data(soup):
     iso_code = info_box.find(text="ISO 3166 code").findNext("td").text
     timezone = info_box.find(text="Time zone").findNext("td").text
     return [language, currency_name.text, currency_iso.text, timezone, iso_code]
+
+
+def get_current_weather(country, city):
+    formatted_country = country.replace(" ", "-").lower()
+    formatted_city = city.replace(" ", "-").lower()
+    weather_request = requests.get(f'{weather_url}{formatted_country}/{formatted_city}')
+    weather_soup = BeautifulSoup(weather_request.text, "html.parser")
+    temperature = weather_soup.find("div", text="Now").findNext("div", class_="h2").text
+    return temperature

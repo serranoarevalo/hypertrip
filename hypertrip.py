@@ -1,6 +1,6 @@
-from utils import get_city_soup, get_country_soup, get_country_data
+from utils import get_city_soup, get_country_soup, get_country_data, get_current_weather, format_names
 
-city = "Seoul"  # input("Please write the name of the city you want to go to: ")
+city = format_names("Seoul")  # input("Please write the name of the city you want to go to: ")
 
 city_soup = get_city_soup(city)
 
@@ -13,3 +13,4 @@ language, currency, currency_iso, timezone, iso_code = get_country_data(country_
 print(f'Language: {language}, Currency: {currency}, Timezone: {timezone}, Country Code: {iso_code}')
 
 
+current_weather = get_current_weather(country, city)

@@ -11,5 +11,5 @@ Python scrapper to get travel information of any city.
 
 
 ### Built with:
-- [ ] Flask
-- [ ] BeautifulSoup
+- [x] Flask
+- [x] BeautifulSoup
