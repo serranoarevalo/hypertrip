@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hypertrip</title>
+  </head>
+  <body>
+    <h2>Hypertrip</h2>
+    {% if city %}
+        <h3>Results for {{ city }}</h3>
+    {% else %}
+    <form method="POST">
+      <label for="city">Where are you going?</label>
+      <input
+        name="city"
+        type="text"
+        placeholder="Write a city"
+        id="city"
+        required
+      />
+      <input type="submit" value="Find city info!" />
+    </form>
+    {% endif %}
+  </body>
+</html>
