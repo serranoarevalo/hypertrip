@@ -7,10 +7,22 @@
     <title>Hypertrip</title>
   </head>
   <body>
-    <h2>Hypertrip</h2>
+    
     {% if city %}
-        <h3>Results for {{ city }}</h3>
+        <h2>{{ city }}</h2>
+        <h3>Language: {{city_info.language}}</h3>
+        <h3>Timezone: {{city_info.timezone}}</h3>
+        <h3>Weather: {{city_info.weather}}</h3>
+        <h3>Currency: {{city_info.currency}}</h3>
+        <h3>$1 USD is {{city_info.one_dollar_is}}</h3>
+        <h3>Hotels:</h3>
+        {% for hotel in city_info.hotels%}
+            <h4>{{hotel.name}}</h4>
+            <span>Price: {{hotel.price}}</span> / 
+            <a href="{{hotel.booking_url}}">Book now</a>
+        {% endfor %}
     {% else %}
+    <h2>Hypertrip</h2>
     <form method="POST">
       <label for="city">Where are you going?</label>
       <input
